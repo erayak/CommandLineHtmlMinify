@@ -1,0 +1,24 @@
+{
+  "name": "command-line-html-minify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erayak/CommandLineHtmlMinify.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erayak/CommandLineHtmlMinify/issues"
+  },
+  "homepage": "https://github.com/erayak/CommandLineHtmlMinify#readme",
+  "dependencies": {
+    "fs.extra": "^1.3.2",
+    "minimize": "^2.1.0",
+    "prompt": "^1.0.0"
+  }
+}
