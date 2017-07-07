@@ -22,29 +22,43 @@
 
                     fs.readdir('AddMinifyHtmlFile',( err, rows ) => {
 
-                        fileName.push(rows);
+                        fileName = rows;
 
-                        fs.readFile(`AddMinifyHtmlFile/${rows[1]}`,( err, rows ) => {
+                            let multiMinfyData = 0;
+                            let multiMinfyDatas = () => {
 
-                            minimize.parse(rows, (error, data) => {
-
-                                fs.mkdir(`output`,( ex ) => {
+                                    if( multiMinfyData != fileName.length )
+                                    {
                                         
-                                    fse.copy(`AddMinifyHtmlFile/${fileName[0][1]}`, `output/${fileName[0][1]}`, { replace: false },(err) => {
+                                        fs.readFile(`AddMinifyHtmlFile/${fileName[multiMinfyData]}`,( err, rows ) => {
 
-                                        fs.writeFile(`output/${fileName[0][1]}`, `${data}`, (err) => {
+                                            minimize.parse(rows, (error, data) => {
 
-                                            console.log(" Successful! ( In the file output folder ) ");
-                                        
+                                                fs.mkdir(`output`,( ex ) => {
+                                                        
+                                                    fse.copy(`AddMinifyHtmlFile/${fileName[multiMinfyData]}`, `output/${fileName[multiMinfyData]}`, { replace: false },(err) => {
+
+                                                        fs.writeFile(`output/${fileName[multiMinfyData]}`, `${data}`, (err) => {
+
+                                                            multiMinfyData++;
+                                                            return multiMinfyDatas();
+
+                                                        });
+
+                                                    });
+
+                                                });
+
+                                            });
+
                                         });
+                                    
+                                    }
+                                    else
+                                        console.log(" Successful! ( In the file output folder ) ");
 
-                                    });
-
-                                });
-
-                            });
-
-                        });
+                            };
+                            multiMinfyDatas();
 
                     });
 
